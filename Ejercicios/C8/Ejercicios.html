@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body onload="initE9();">
+    E1.
+    <p>
+        <canvas id="Canvas1" width="200" height="100"
+                style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+        </canvas>
+        </br>
+    </p>
+
+
+    E2.
+    <p>
+        <canvas id="Canvas2" width="200" height="100"
+                style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+        </canvas>
+        </br>
+    </p>
+
+    E3.
+    <p>
+        <canvas id="Canvas3" width="200" height="100"
+                style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+        </canvas>
+        </br>
+    </p>
+
+    E4.
+    <p>
+        <span id="title">
+        </span>
+        </br>
+    </p>
+
+    E5.
+    <p>
+        </br>
+        <input id="newTitle" type="text" />
+        </br>
+        <button onclick="changeTitle();">Change title</button></br>
+    </p>
+
+    E6.
+    <p>
+    </br>
+    <div id="exampleText">
+        one;two;three;four;five
+    </div>
+    </br>
+    <button onclick="changeText();">Separate text</button>
+    </br>
+    </p>
+
+    E7.
+    <p>
+        </br><input type='file' onchange='handleFileSelection(this);' /></br>
+    </p>
+
+    E8.
+    <p>
+        </br></br>
+        <form>
+            Intreduce number with the mask XXX-XX-XX-XX,
+            X is a number: <input id="serie"
+                                              type='text' size='12'
+                                              onkeyup="correct();">.
+        </form>
+    </p>
+
+    E9.
+    <p>
+        <div>
+    <p id="welcomeE9">Welcome to exercise 9.</p>
+    <form>
+        Save text with cookies
+        <input id="textE9" type="text" oninput="saveText();" />.
+    </form>
+    </div>
+    </p>
+
+    E10.
+    <p>
+        First number: <input id="firstNum" type="number" /></br>
+        Second number: <input id="secondNum" type="number" /></br>
+        <button onclick="isBiggerThan();">¿Nº 1 > Nº2?</button>
+    <p id="btResult"></p>
+    </p>
+
+</body>
+<script src="app.js"></script>
+</html>

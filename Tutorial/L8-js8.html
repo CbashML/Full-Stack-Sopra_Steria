@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mostrar/ocultar elementos</title>
+    <script type="text/JavaScript">
+      function comprobar_rango(){
+      var valor = document.getElementById("precio1").value;
+      var lista_parrafos = document.getElementsByTagName("p");
+      var primer_parrafo = lista_parrafos[0];
+      if (valor >= 80) {
+      mostrar = "block";
+      } else {
+      mostrar = "none";
+      }
+      primer_parrafo.style.display = mostrar;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Mostrar/Ocultar elemento</h1>
+    <form>Introduce un precio:
+        <input type = "number" id = "precio1" min = "1" max = "100" oninput = " comprobar_rango();">
+    </input>
+    </form>
+    <p style="display: none">
+      Advertencia: Cifra dentro del 20% de las limitaciones.
+    </p>
+  </body>
+</html>

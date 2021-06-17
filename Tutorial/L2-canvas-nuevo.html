@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Canvas</title>
+    <script>
+        function f1()
+        {
+            var canvas = document.getElementById("smlRectangle");
+            context = canvas.getContext("2d");
+            context.strokeStyle = "#FF0000"; //Otra forma de dar los colores en el canvas
+            context.strokeRect(10, 20, 200, 100);
+        }
+    </script>
+</head>
+
+<body onload="f1();">
+    <canvas id="smlRectangle">
+    </canvas>
+</body>
+
+</html>
