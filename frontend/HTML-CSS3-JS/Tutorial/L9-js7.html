@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript accede a archivos locales</title>
+    <script type="text/javascript">
+      function reconocer(file_handle) {
+        var tam = file_handle.size;
+        var fnombre = file_handle.name;
+        var mensaje =
+          "Has elegido el archivo '" +
+          fnombre +
+          "'. Reconocible imagen, conteniendo " +
+          tam +
+          " bytes.";
+        alert(mensaje);
+      }
+      function alertar(fnombre) {
+        var mensaje =
+          "El nombre del archivo '" +
+          fnombre +
+          "'no es de extension aceptable.";
+        alert(mensaje);
+      }
+      function handle_file_selection(item) {
+        var f = item.files[0];
+        var fnombre = f.name;
+        var ultimo_indice = fnombre.lastIndexOf(".");
+        if (ultimo_indice == -1) {
+          alertar(fnombre);
+          return;
+        }
+        var ext = fnombre.substr(ultimo_indice + 1);
+        if (ext.toLowerCase() in { gif: "", jpg: "", png: "", tif: "" }) {
+          reconocer(f);
+        } else {
+          alertar(fnombre);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript accede a archivos locales</h1>
+    <input type="file" onchange="handle_file_selection(this);" />
+  </body>
+</html>

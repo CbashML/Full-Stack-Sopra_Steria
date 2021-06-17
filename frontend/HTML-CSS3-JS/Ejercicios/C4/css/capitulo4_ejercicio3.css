@@ -1,0 +1,14 @@
+p {
+  color: blue;
+}
+
+.opinion {
+  color: green;
+}
+
+#ejercicio3 {
+	font-family: Garamond;
+	font-size:20px;
+    color: brown;
+    font-style: italic;
+}

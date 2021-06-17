@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Actualizar elementos</title>
+    <script type="text/JavaScript">
+      // comprueba_rango asigna el estilo del display
+      // al primer párrafo como una función
+      // que muestra si el precio es 80 o
+      // mayor, o 79 y menor.
+      function comprobar_rango () {
+      var valor = document.getElementById("precio1").value;
+      var lista_parrafos = document.getElementsByTagName("p");
+      var primer_parrafo = lista_parrafos[0];
+      if (valor >= 80)
+      {
+      mostrar = "block";
+      }
+      else
+      {
+      mostrar = "none";
+      }
+      primer_parrafo.style.display = mostrar;
+      }
+      // computo_total() tiene la responsabilidad
+      // de actualizar el display con el total
+      // del precio con el impuesto
+      function computo_total()
+      {
+      var valor = document.getElementById("precio1").value;
+      if (isNaN(valor))
+      {
+      total = "INDETERMINADO";
+      }
+      else
+      {
+      // Se asume que los impuestos son un 21%.
+      total = 1.21 * valor;
+      total = total.toFixed(2);
+      }
+      var cantidad_total = document.getElementById("total");
+      cantidad_total.innerHTML = total;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Actualizar elementos</h1>
+    <form>
+      Introduce el precio 
+      <input type = "number" id = "precio1" min = "1" max = "100" oninput = "comprobar_rango(); computo_total();">
+</input>
+      El precio total, incluyendo el impuesto, es
+      <span id="total">INDETERMINADO</span>.
+    </form>
+    <p style="display: none">
+      Advertencia: Cifra dentro del 20% de las limitaciones
+    </p>
+  </body>
+</html>
