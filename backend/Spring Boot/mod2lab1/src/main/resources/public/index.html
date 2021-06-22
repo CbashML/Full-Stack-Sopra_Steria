@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Spring Boot 2.0 - MVC Bootstrap</title>
+
+    <link
+      rel="stylesheet"
+      href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <script src="webjars/jquery/3.3.1/dist/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="js/scripts.js"></script>
+  </head>
+  <body style="height: 100%; display: flex; flex-flow: column">
+    <div id="navbar" style="visibility: hidden">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Spring Boot 2.0 - MVC Bootstrap 4</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Students
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Create</a>
+                <a class="dropdown-item" href="#">Import</a>
+                <div class="dropdown-divider"></div>
+                <a id="ViewAll" class="dropdown-item" href="#">View All</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div
+      id="starter"
+      class="container"
+      style="
+        height: 90vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <button id="show" type="button" class="btn" style="">
+        <img
+          alt="SpringBoot"
+          src="images/spring-boot-logo.svg"
+          style="height: 40vh; width: 40vw"
+        />
+      </button>
+    </div>
+
+    <div
+      id="students"
+      class=""
+      style="
+        height: 90vh;
+        width: 100%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <table id="table">
+        <thead>
+          <tr>
+            <th data-field="id">ID</th>
+            <th data-field="name">Name</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div
+      id="alert"
+      class="alert alert-success alert-dismissible invisible"
+      style="position: fixed; bottom: 0; width: 100vw; z-index: 100"
+    >
+      <!-- <button type="button" class="close" data-dismiss="alert">×</button> -->
+      <!-- <button type="button" class="close" data-hide="alert">×</button> -->
+      <button id="close" class="close" type="button">×</button>
+      <strong
+        >■ Module 03 Lab 01 - First web application with Spring Boot & Bootstrap
+        4.</strong
+      >
+      Success!
+    </div>
+  </body>
+</html>

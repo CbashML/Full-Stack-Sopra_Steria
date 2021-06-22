@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Registration - Success</title>
+
+        <style>
+            body {
+                height: 100vh; 
+                
+                display: flex; 
+                align-items: 
+                center; justify-content: center;
+            }
+            section {
+                width: 40vw; padding: 20px; outline: 2px solid darkseagreen;
+            }
+        </style>
+    </head>
+    <body style="box-sizing: border-box; display: flex; justify-content: center;">
+        <section th:object="${student}" style="outline: 2px solid darkseagreen;">
+            <h3>User...</h3>
+
+            <div>
+                <label>Name</label>
+                <input type="text" th:field="*{name}" disabled="disabled"/>
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="text" th:field="*{email}" disabled="disabled"/>
+            </div>
+
+            <div style="background-color: darkseagreen; margin-top: 20px; display: flex; justify-content: center;">
+                <h3 style="color: white;">HAS BEEN SUCCESSFULLY REGISTERED</h3>
+            </div>
+
+        </section>
+    </body>
+</html>               

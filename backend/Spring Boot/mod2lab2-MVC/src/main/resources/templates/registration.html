@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Registration</title>
+
+        <style>
+            body {
+                height: 100vh; 
+                
+                display: flex; 
+                align-items: 
+                center; justify-content: center;
+            }
+            section {
+                width: 40vw; padding: 20px; outline: 2px solid darkseagreen;
+            }
+            div { 
+                margin: 20px; 
+            }
+            
+            h3 { 
+                background-color: darkseagreen; margin-top: 0px; margin-bottom: 40px; 
+            }
+            
+            .text-red { 
+                color:red; 
+            }
+        </style>
+
+    </head>
+    <body>
+        <section>
+            <h3>User Registration Form</h3>
+            <form th:action="@{/registration}" th:object="${student}" method="post">
+                
+                <p  th:if="${#fields.hasErrors('global')}" 
+                    th:errors="*{global}"
+                    th:class="text-red">Incorrect data</p>
+                <!--
+                <div>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+                    </ul>
+                </div>
+                -->
+
+                <!--
+                <ul th:if="${#fields.hasErrors('global')}">
+                    <li th:each="err : ${#fields.errors('global')}" th:text="${err}">Input is incorrect</li>
+                </ul>
+                -->
+
+                <div th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+                    <label>Name</label>
+                    <input type="text" th:field="*{name}"/>
+                    <p  th:if="${#fields.hasErrors('name')}" 
+                        th:errors="*{name}"
+                        th:class="text-red">Incorrect data</p>
+                </div>
+                
+                <div th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+                    <label>Email</label>
+                    <input type="text" th:field="*{email}"/>
+                    <p  th:if="${#fields.hasErrors('email')}" 
+                        th:errors="*{email}"
+                        th:class="text-red">Incorrect data</p>
+                </div>
+                
+                <div th:classappend="${#fields.hasErrors('password')}? 'has-error'">
+                    <label>Password</label>
+                    <input type="password" th:field="*{password}"/>
+                    <p  th:if="${#fields.hasErrors('password')}" 
+                        th:errors="*{password}"
+                        th:class="text-red">Incorrect data</p>
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>               
