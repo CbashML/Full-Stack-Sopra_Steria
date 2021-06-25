@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mod3lab1.utilities.HTMLUtilities;
+
 @SpringBootApplication
 @RestController
 public class RESTFulServer {

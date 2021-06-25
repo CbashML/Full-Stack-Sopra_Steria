@@ -1,5 +1,4 @@
-package com.example.mod3lab1.model;
-
+package com.example.mod2lab2.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;

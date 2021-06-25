@@ -30,32 +30,53 @@ public class StudentsServiceController {
         student = new Student();
         student.setId("1");
         student.setName("Student 1");
+        student.setEmail("student1@example.com");
+        student.setPassword("Student1");
         repo.put(student.getId(), student);
     
         student = new Student();
         student.setId("2");
         student.setName("Student 2");
+        student.setEmail("student2@example.com");
+        student.setPassword("Student2");
         repo.put(student.getId(), student);
 
         student = new Student();
         student.setId("3");
         student.setName("Student 3");
+        student.setEmail("student3@example.com");
+        student.setPassword("Student3");
         repo.put(student.getId(), student);
 
         student = new Student();
         student.setId("4");
         student.setName("Student 4");
+        student.setEmail("student4@example.com");
+        student.setPassword("Student4");
         repo.put(student.getId(), student);
 
         student = new Student();
         student.setId("5");
         student.setName("Student 5");
+        student.setEmail("student5@example.com");
+        student.setPassword("Student5");
         repo.put(student.getId(), student);
     }
     
-    @GetMapping(value="/" + __ControllerRelativePath + "/getOne")
-    public ResponseEntity<Student> getOne(@RequestParam(required = true) String id) { 
+    @GetMapping(value="/" + __ControllerRelativePath + "/getById")
+    public ResponseEntity<Student> getById(@RequestParam(required = true) String id) { 
         return new ResponseEntity<Student>(repo.get(id), HttpStatus.OK);
+    }
+    
+    @GetMapping(value="/" + __ControllerRelativePath + "/getByEmail")
+    public ResponseEntity<Student> getByEmail(@RequestParam(required = true) String email) { 
+       String id = "0";
+       for (int i = 0; i < repo.size(); i++) {
+    	   String key = String.valueOf(i + 1);
+    	   if (repo.get(key).getEmail() == email) 
+    		   id = key;
+       }
+    	return new ResponseEntity<Student>(repo.get(id), HttpStatus.OK);
     }
 
     @RequestMapping(value="/" + __ControllerRelativePath)
