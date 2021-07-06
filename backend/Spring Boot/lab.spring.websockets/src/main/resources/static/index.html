@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello WebSocket</title>
+        <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+
+        <script src="webjars/jquery/3.4.1/dist/jquery.min.js"></script>
+        <script src="webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+        <script src="webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+        <noscript>
+            <h2 style="color: #ff0000">Seems your browser doesn't support Javascript! 
+                Websocket relies on Javascript being enabled. Please enable Javascript 
+                and reload this page!</h2>
+        </noscript>
+        <div id="main-content" class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="connect">WebSocket connection:</label>
+                            <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                            <button id="disconnect" class="btn btn-default" type="submit" 
+                                    disabled="disabled">Disconnect</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="name">Your name...</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="">Messages...</div>
+                        <div class="panel-body" style="margin-top: 15px;">
+                            <ul id="chat" class="chat"> 
+                                <!-- 
+                                     Templates de los items del chat 
+                                     ocultos: para clonarlos rellenarlos e insertarlos en el chat) 
+                                -->
+                                <li style="display:none" id="outboundtemplate" class="left clearfix">
+                                    <!--
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff&text=U"
+                                             class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font Nombre" >Jack Sparrow</strong> 
+                                            <small class="pull-right text-muted">
+                                                <span class="glyphicon glyphicon-asterisk Tiempo"</span>
+                                                <span id="timestamp">12/02/2015</span> 
+                                            </small>
+                                        </div>
+                                        <p></p>
+                                    </div>
+                                    -->
+                                    <div class="thedfa-panel">
+                                        <div class="thedfa-panel">
+                                            <span class="">
+                                                <img src="http://placehold.it/50/55C1E7/fff&text=U" 
+                                                     class="img-circle" />
+                                            </span>
+                                            <div class="header" style="padding-left: 10px;"">
+                                                <div class="thedfa-left-user">
+                                                    <strong style="">Me</strong>
+                                                    <small id="timestamp">12/02/2015</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thedfa-leftuser-message">
+                                        <p></p>
+                                    </div>
+                                </li>
+                                <li style="display:none;" id="inboundtemplate" class="left clearfix">
+                                    <div class="thedfa-panel-right">
+                                        <div class="header" style="padding-right: 10px;">
+                                            <div class="thedfa-right-user" >
+                                                <strong style="">Server</strong>
+                                                <small id="timestamp">12/02/2015</small>
+                                            </div>
+                                        </div>
+                                        <span class="">
+                                            <img src="http://placehold.it/50/55C1E7/fff&text=U" 
+                                                 class="img-circle" />
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="thedfa-rightuser-message">
+                                        <p></p>
+                                    </div>
+                                    <!--
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font Nombre" >Me</strong> 
+                                            <small class="pull-right text-muted">
+                                            <span class="glyphicon glyphicon-asterisk Tiempo"
+                                            </span> 12/02/2015 </small>
+                                        </div>
+                                        <p></p>
+                                    </div>
+                                    -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer" style="margin-top: 15px;">
+                            <div class="input-group">
+                                <input id="content" type="text" class="form-control input-sm" 
+                                       placeholder="Write your message here..." />
+                                <span class="input-group-btn">
+                                    <button id="send" class="btn btn-warning btn-sm">Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>    
