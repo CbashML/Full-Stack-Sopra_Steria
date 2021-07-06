@@ -16,12 +16,19 @@ public class OutboundMessage implements IMessage {
 	private long id;
 
 	private String content;
+	
+	private String username = "Anonymous";
 
 	public OutboundMessage() {
 	}
 
 	public OutboundMessage(String content) {
 		this.content = content;
+	}
+
+	public OutboundMessage(String content, String username) {
+		this.content = content;
+		this.username = username;
 	}
 
 	/*
@@ -44,4 +51,19 @@ public class OutboundMessage implements IMessage {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.sebas.lab.spring.websockets.domain.IMessage#getUsername()
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sebas.lab.spring.websockets.domain.IMessage#setUsername(java.lang.String)
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 }

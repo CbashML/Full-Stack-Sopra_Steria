@@ -1,6 +1,5 @@
 var stompClient = null;
 let subscribing = false;
-let messagesLength = 0;
 let messagesQueue = [];
 
 let showCounter = 0;
@@ -19,6 +18,10 @@ function setConnected(connected) {
 function connect() {
     var socket = new SockJS('/thedfa-communicationshub');
     let headers = { user :  $('#name').val()}
+    if ( $("#name").val() === "" ){
+		alert("User vacio");
+		return;
+	}
     stompClient = Stomp.over(socket);
     stompClient.connect(headers, function (frame) {
                                 setConnected(true);
@@ -39,8 +42,6 @@ callback = function (msg){
 	console.log("TRACE: " + messageJSON);
 	console.log("TIPO: " + typeof messageJSON);
 	console.log("OBJ: " +  messageJSON)
-
-	messagesLength = messageJSON.length;
 	
 	if(subscribing === false){
 		subscribingToAndEnqueuing(messageJSON);
@@ -48,8 +49,9 @@ callback = function (msg){
 			showMessages();
 		}
 		else {
-			console.log("TRACE callback message  " + messageJSON.content);
-			show(messageJSON.content);
+			console.log("TRACE callback content message  " + messageJSON.content);
+			console.log("TRACE callback username message   " + messageJSON.username);
+			show(messageJSON);
 		}
 }
 
@@ -62,15 +64,15 @@ function disconnect() {
 }
 
 function sendMessage() {
-    stompClient.send("/app/send", {}, JSON.stringify({'content': $("#content").val()}));
+    stompClient.send("/app/send", {}, JSON.stringify({'content': $("#content").val(), 'username': $("#name").val()}));
 }
 
 function show(message) {
 	
 	console.log("TRACE show counter: " + ++showCounter);
 	
-	 console.log("TRACE message received: " + message);
-	
+	 console.log("TRACE message received: " + message.content);
+	 	 
     var now = new Date();
             console.log(now);
             var d = now.getDate();
@@ -80,15 +82,16 @@ function show(message) {
             var min = now.getMinutes();
 
             Fecha = d + "/" + m + "/" + y + "  " + h + ":" + min;
-            
-      console.log(message);
-      console.log("MESSAGE TRACE 1: " + message);
+                  
+      console.log(message.content);
+      console.log("MESSAGE TRACE 1: " + message.content);
       var li = $("#inboundtemplate").clone();
       li.appendTo("#chat");
-      li.find( "p" ).html( message );
+      li.find("#username").html(message.username)
+      li.find( "p" ).html( message.content );
       li.find("#timestamp").html(Fecha);
       li.show();
-      console.log("MESSAGE TRACE 2: " + message);
+      console.log("MESSAGE TRACE 2: " + message.content);
 
 }
 
@@ -99,10 +102,8 @@ function subscribingToAndEnqueuing(messageJSON){
 	if(messageJSON instanceof Array) {
 		console.log("TRACE Longitud del array: " + messageJSON.length);
 		messageJSON.map(function(m) {
-			if(m.content.length > 0){
 				console.log("TRACE push : " + m.content);
-				console.log(messagesQueue.push(m.content));
-			}
+				console.log(messagesQueue.push(m));
 		});
 		console.log(messagesQueue);
 		console.log(messagesQueue.length);
@@ -136,7 +137,7 @@ $(document).ready(
     function() {
     	
     	console.log("TRACE ready");
-
+    	
         $('#send').click(function(){
             var now = new Date();
             console.log(now);

@@ -30,8 +30,8 @@ public class CommunicationsHubService {
 	 */
 	public OutboundMessage send(InboundMessage message) throws Exception {
 		Thread.sleep(1000); // simulated delay
-		outMsgRepo.save(new OutboundMessage(message.getContent()));
-		return new OutboundMessage(message.getContent());
+		outMsgRepo.save(new OutboundMessage(message.getContent(), message.getUsername()));
+		return new OutboundMessage(message.getContent(), message.getUsername());
 	}
 
 	/**

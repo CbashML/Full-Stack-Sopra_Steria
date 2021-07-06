@@ -51,9 +51,9 @@ public class Application implements ApplicationRunner
 	CommandLineRunner runner() {
 		return args -> {
 			// Save demo message data to database
-			outMsgRepo.save(new OutboundMessage("Welcome to basic hello world chat!"));
-			outMsgRepo.save(new OutboundMessage("Test message 1!"));
-			outMsgRepo.save(new OutboundMessage("Test message 2!"));
+			outMsgRepo.save(new OutboundMessage("Welcome to basic hello world chat!", "Server"));
+			outMsgRepo.save(new OutboundMessage("Test message 1!", "Server"));
+			outMsgRepo.save(new OutboundMessage("Test message 2!", "Server"));
 		};
 	}
 	
