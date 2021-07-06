@@ -27,6 +27,9 @@ public class Application implements ApplicationRunner
 		System.out.println(say(" WebSockets chat Application. Running..."));
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.boot.ApplicationRunner#run(org.springframework.boot.ApplicationArguments)
+	 */
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println(say(" Websockets chat Application. The application is currently running..."));

@@ -18,8 +18,9 @@ function setConnected(connected) {
 
 function connect() {
     var socket = new SockJS('/thedfa-communicationshub');
+    let headers = { user :  $('#name').val()}
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+    stompClient.connect(headers, function (frame) {
                                 setConnected(true);
                                 // Pedir todos
                                 console.log('Connected: ' + frame);
@@ -42,30 +43,9 @@ callback = function (msg){
 	messagesLength = messageJSON.length;
 	
 	if(subscribing === false){
-		susbcribing = true;
-		if(messageJSON instanceof Array) {
-			console.log("TRACE Longitud del array: " + messageJSON.length);
-			console.log("TIPO ARRAY instanceof " + msg.body);
-			messageJSON.map(function(m) {
-				if(m.content.length > 0){
-					console.log("TRACE push : " + m.content);
-					console.log(messagesQueue.push(m.content));
-				}
-			});
-			console.log(messagesQueue);
-			console.log(messagesQueue.length);
-		 }
-		subscribing = false;
+		subscribingToAndEnqueuing(messageJSON);
 		} if (messagesQueue.length > 0){
-			while (subscribing === true){
-				setTimeout(() => {
-					console.log("Waiting....")
-				}, 500);
-			}
-			console.log("TRACE messages: " + messagesQueue);
-			while (messagesQueue.length > 0 ) 
-				show(messagesQueue.shift())
-			console.log(messagesQueue.length);
+			showMessages();
 		}
 		else {
 			console.log("TRACE callback message  " + messageJSON.content);
@@ -112,6 +92,38 @@ function show(message) {
 
 }
 
+//Al subscribirse obtiene una lista de mensajes que se encolan en messagesQueue, 
+//para posteriormente mostrarlos y desencolarlos.
+function subscribingToAndEnqueuing(messageJSON){
+	susbcribing = true;
+	if(messageJSON instanceof Array) {
+		console.log("TRACE Longitud del array: " + messageJSON.length);
+		messageJSON.map(function(m) {
+			if(m.content.length > 0){
+				console.log("TRACE push : " + m.content);
+				console.log(messagesQueue.push(m.content));
+			}
+		});
+		console.log(messagesQueue);
+		console.log(messagesQueue.length);
+	 }
+	subscribing = false;
+}
+
+//Muestra y desencola los mensajes contenido en messagesQueue,
+//espera en el caso de que subscribing = true.
+function showMessages(){
+	while (subscribing === true){
+		setTimeout(() => {
+			console.log("Waiting....")
+		}, 500);
+	}
+	console.log("TRACE messages: " + messagesQueue);
+	while (messagesQueue.length > 0 ) 
+		show(messagesQueue.shift())
+	console.log(messagesQueue.length);
+}
+
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
@@ -124,8 +136,6 @@ $(document).ready(
     function() {
     	
     	console.log("TRACE ready");
-    	
-        connect();
 
         $('#send').click(function(){
             var now = new Date();
@@ -143,6 +153,7 @@ $(document).ready(
             var message = $("#content").val();
             var li = $("#outboundtemplate").clone();
             li.appendTo("#chat");
+            li.find("#me").html($("#name").val());
             li.find( "p" ).html( message );
             li.find("#timestamp").html(Fecha);
             console.log("Li.show TRACE: " + message);

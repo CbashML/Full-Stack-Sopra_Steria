@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.sebas.lab.spring.websockets.domain.OutboundMessage;
 
+/**
+ * @author semolina
+ *
+ */
 @Repository
 public interface OutMessageRepository extends JpaRepository<OutboundMessage, Long> {
 

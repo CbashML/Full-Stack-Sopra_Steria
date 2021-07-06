@@ -1,102 +1,143 @@
-.chat
-{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+body {
+	background-color: rgb(0 123 255/ 30%);
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.chat li
-{
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
+.chat {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.chat li.left .chat-body
-{
-    margin-left: 60px;
+.chat li {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	background-color: white;
+	/* 	border-bottom: 1px dotted #B3A9A9; */
+	border-radius: 1rem;
+	box-shadow: 0.2rem 0.2rem 0.2rem 0.05rem rgb(0 0 0/ 5%);
+	overflow-y: hidden;
+	margin: 1rem;
+	width: 97%;
 }
 
-.chat li.right .chat-body
-{
-    margin-right: 60px;
+.chat li.left .chat-body {
+	margin-left: 60px;
 }
 
-
-.chat li .chat-body p
-{
-    margin: 0;
-    color: #777777;
+.chat li.right .chat-body {
+	margin-right: 60px;
 }
 
-.panel .slidedown .glyphicon, .chat .glyphicon
-{
-    margin-right: 5px;
+.chat li .chat-body p {
+	margin: 0;
+	color: #777777;
 }
 
-.panel-body
-{
-    overflow-y: scroll;
-    height: 500px;
-
-    outline: 2px solid blue;
-    padding: 5px;;
+.panel .slidedown .glyphicon, .chat .glyphicon {
+	margin-right: 5px;
 }
 
-::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+.panel-body {
+	overflow-y: scroll;
+	height: 32rem;
+	/*     outline: 2px solid blue; */
+	padding: 5px;;
+	background-color: rgb(0 123 255/ 25%);
+	border-radius: 1rem;
+	box-shadow: 0.4rem 0.4rem 0.4rem 0.15rem rgb(0 0 0/ 5%);
 }
 
-::-webkit-scrollbar
-{
-    width: 12px;
-    background-color: #F5F5F5;
+.scrollable-content::-webkit-scrollbar * {
+	background: transparent;
 }
 
-::-webkit-scrollbar-thumb
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
+::-webkit-scrollbar-track {
+	/* 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8); */
+	/* 	background-color: #F5F5F5; */
+	
 }
+
+::-webkit-scrollbar {
+	width: 12px;
+	/* 	background-color: #F5F5F5; */
+}
+
+::-webkit-scrollbar-thumb {
+	/* 	-webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, .3); */
+	/* 	background-color: #555; */
+	/* 	background-color: rgb(0 0 0 / 8%); */
+	
+}
+
 .thedfa-left-user {
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-start; 
-    justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
 }
+
 .thedfa-right-user {
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-start; 
-    justify-content: flex-end;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
 }
 
 .thedfa-leftuser-message {
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: 
-    flex-start; 
-    padding-top: 10px; 
-    padding-left: 65px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding-top: 10px;
+	padding-left: 65px;
 }
+
 .thedfa-rightuser-message {
-    display: flex; 
-    align-items: flex-end; 
-    justify-content: flex-end; 
-    padding-top: 10px; 
-    padding-right: 60px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	padding-top: 10px;
+	padding-right: 60px;
 }
 
 .thedfa-panel-left {
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: flex-start;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
 }
 
 .thedfa-panel-right {
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: flex-end;
-}                    
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+
+/* Added*/
+
+input#name {
+    width: 40%;
+}
+
+.btn-default {
+	background-color: white;
+}
+
+.btn {
+	border-radius: 1rem;
+	box-shadow: 0.1rem 0.1rem 0.1rem 0.05rem rgb(0 0 0/ 10%);
+	height: calc(1.5em + .75rem + 2px);
+	margin: 1rem;
+}
+
+.form-control {
+	border-radius: 1rem;
+	box-shadow: 0.1rem 0.1rem 0.1rem 0.05rem rgb(0 0 0/ 10%);
+	margin: 1rem;
+}
+
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
