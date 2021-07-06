@@ -14,8 +14,6 @@ function setConnected(connected) {
     else {
         $("#conversation").hide();
     }
-
-    // $("#greetings").html("");
 }
 
 function connect() {
@@ -30,8 +28,10 @@ function connect() {
     );
 }
 
-//Función que permite hacer la subscripción y cargar los mensajes en la pila y luego mostrarlos
-//en el caso de que solo llegue un mensaje y ya se hayan mostrados los demás de la cola, se mostrará este último.
+// Función que permite hacer la subscripción y cargar los mensajes en la pila 
+// y luego mostrarlos. 
+// En el caso de que solo llegue un mensaje y ya se hayan mostrados los demás mensajes de la cola, 
+// se mostrará este último.
 callback = function (msg){
 	subscribing == true;
     let messageJSON = JSON.parse(msg.body)
@@ -86,7 +86,6 @@ function sendMessage() {
 }
 
 function show(message) {
-    // $("#messages").append("<tr><td>" + message + "</td></tr>");
 	
 	console.log("TRACE show counter: " + ++showCounter);
 	
@@ -119,7 +118,6 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    /* $( "#send" ).click(function() { }); */
 });
 
 $(document).ready(
@@ -128,8 +126,6 @@ $(document).ready(
     	console.log("TRACE ready");
     	
         connect();
-        
-        // var Nombre= prompt("Nombre:");
 
         $('#send').click(function(){
             var now = new Date();
@@ -141,11 +137,6 @@ $(document).ready(
             var min = now.getMinutes();
 
             Fecha = d + "/" + m + "/" + y + "  " + h + ":" + min;
-
-            /*
-			 * TabladeBaseDatos.push({ Nombre:Nombre,
-			 * Mensaje:$("#Mensaje").val(), Fecha:Fecha });
-			 */
             
             sendMessage();
 

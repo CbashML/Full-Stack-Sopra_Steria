@@ -22,14 +22,14 @@ public class Application implements ApplicationRunner
 	private OutMessageRepository outMsgRepo;
 	
 	public static void main(String[] args) {
-		say("WebSockets chat Application. Starting...");
+		System.out.println(say("WebSockets chat Application. Starting..."));
 		SpringApplication.run(Application.class, args);
-		say(" WebSockets chat Application. Running...");
+		System.out.println(say(" WebSockets chat Application. Running..."));
 	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		say(" Websockets chat Application. The application is currently running...");
+		System.out.println(say(" Websockets chat Application. The application is currently running..."));
 	}
 
 	public static String say(String message) {
@@ -40,6 +40,10 @@ public class Application implements ApplicationRunner
 				+ message;
 	}
 	
+	/**
+	 * Generar los primeros mensajes en la base de datos
+	 * entre ellos el primero es el saludo con id = 1L.
+	 */
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
