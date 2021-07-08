@@ -1,4 +1,5 @@
 body {
+  /* background-image: linear-gradient(to bottom right, #333333, whitesmoke, #fff); */
   display: grid;
   justify-content: center;
 }
@@ -24,9 +25,10 @@ figure img {
 }
 
 .container {
+  /* background-image: linear-gradient(to bottom right, #bbaefd, whitesmoke, #fff); */
   border: 1em;
   border-radius: 2em;
-  box-shadow: 0.45rem 0.45rem 0.95rem 0.05rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.45rem 0.45rem 0.95rem 0.05rem rgba(14, 14, 14, 0.15);
   padding-top: 1.2em;
   padding-bottom: 1.2em;
   margin: 2%;
@@ -49,6 +51,7 @@ figure img {
 }
 
 .box-container {
+  background-color: white;
   border: 1em;
   border-radius: 2em;
   box-shadow: 0.45rem 0.45rem 0.95rem 0.25rem rgba(0, 0, 0, 0.1);
@@ -68,7 +71,7 @@ figure img {
   }
 
 h4 {
-  color: rgba(13, 197, 157, 0.9);
+  color: #0DC59D;
 }
 
 @media only screen and (max-width: 428px) {
